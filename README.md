@@ -1,10 +1,13 @@
 # TutorDesk — кабинет для частного бизнеса
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-open-4f46e5?style=for-the-badge&logo=vercel&logoColor=white)](https://tutordesk-two.vercel.app)
+[![Vite + React + Tailwind v4](https://img.shields.io/badge/Vite-React%20%2B%20Tailwind%20v4-646cff?style=for-the-badge&logo=vite&logoColor=white)](#для-разработчика)
+
 **Готовый рабочий кабинет для тех, кто ведёт клиентов вручную: репетитор,
 мастер бьюти, фитнес-тренер.** Ученики/клиенты, расписание, оплаты и баланс,
 наглядная аналитика — в одном окне, без таблиц в тетради и хаоса в переписке.
 
-🔗 **Живое демо:** `https://<ваш-проект>.pages.dev` _(вставьте ссылку после деплоя)_
+🔗 **Живое демо:** https://tutordesk-two.vercel.app
 
 ## Что внутри
 
@@ -66,22 +69,27 @@ src/
   index.css    @import "tailwindcss";
 ```
 
-### Деплой на Cloudflare Pages
-1. Запушьте репозиторий на GitHub/GitLab.
-2. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** →
-   **Connect to Git**.
-3. Настройки сборки: **Framework preset** `Vite`, **Build command** `npm run build`,
-   **Build output** `dist`.
-4. **Save and Deploy** → ссылка вида `https://<project>.pages.dev`.
+### Деплой
 
-Файл `public/_redirects` (`/* /index.html 200`) обязателен: он отдаёт `index.html`
-на любых путях, иначе обновление `/students` или `/lessons` вернёт 404 (SPA-роутинг).
+Развёрнут на **Vercel** (production): https://tutordesk-two.vercel.app
+Vercel-проект связан с этим репозиторием — каждый `git push` в `main`
+автоматически пересобирает и обновляет прод.
 
-Деплой из консоли:
+Разовый деплой из консоли:
 ```bash
-npm run build
-npx wrangler pages deploy dist
+npm i -g vercel
+vercel --prod
 ```
+
+Файл `vercel.json` (`rewrites` → `/index.html`) обязателен для Vercel — иначе
+прямое открытие `/students` или `/lessons` вернёт 404 (клиентский SPA-роутинг).
+
+<details>
+<summary>Альтернатива — Cloudflare Pages</summary>
+
+Connect to Git → preset `Vite`, build `npm run build`, output `dist`.
+SPA-фоллбэк уже лежит в `public/_redirects` (`/* /index.html 200`).
+</details>
 
 ## Примечание
 
