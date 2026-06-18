@@ -68,8 +68,8 @@ function AppLayout() {
         </nav>
       </header>
 
-      <main className="flex-1">
-        <div className="mx-auto max-w-6xl p-4 md:p-8">
+      <main className="min-w-0 flex-1">
+        <div className="mx-auto max-w-6xl overflow-hidden p-4 md:p-8">
           <Outlet />
         </div>
       </main>

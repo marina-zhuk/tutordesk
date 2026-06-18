@@ -87,7 +87,7 @@ export default function Lessons() {
         actions={<Button onClick={() => setForm({ mode: 'add', lesson: null })}>+ Добавить {labels.sessionAcc}</Button>}
       />
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+      <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
         {/* Календарь */}
         <Card className="p-4">
           <div className="mb-3 flex items-center justify-between">
@@ -141,17 +141,17 @@ export default function Lessons() {
 
         {/* Список */}
         <Card>
-          <div className="flex flex-col gap-3 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-sm font-medium text-slate-700">
+          <div className="flex min-w-0 flex-col gap-3 border-b border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="min-w-0 text-sm font-medium text-slate-700">
               {selectedDay ? formatDateHuman(selectedDay) : `${MONTHS_NOM[view.month]} ${view.year}`}
               <span className="ml-2 text-slate-400">{list.length}</span>
             </h2>
-            <div className="flex gap-2">
-              <Select value={studentFilter} onChange={setStudentFilter}>
+            <div className="grid min-w-0 grid-cols-1 gap-2 sm:flex sm:items-center">
+              <Select value={studentFilter} onChange={setStudentFilter} className="min-w-0 w-full sm:w-auto">
                 <option value="all">{labels.personsAll}</option>
                 {students.map((s) => (<option key={s.id} value={s.id}>{s.name}</option>))}
               </Select>
-              <Select value={statusFilter} onChange={setStatusFilter}>
+              <Select value={statusFilter} onChange={setStatusFilter} className="min-w-0 w-full sm:w-auto">
                 <option value="all">Все статусы</option>
                 <option value="проведено">Проведено</option>
                 <option value="запланировано">Запланировано</option>
@@ -167,20 +167,20 @@ export default function Lessons() {
               {list.map((l) => {
                 const student = studentMap[l.studentId]
                 return (
-                  <li key={l.id} className="flex items-center justify-between gap-3 px-4 py-3">
+                  <li key={l.id} className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
                     <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="truncate text-sm font-medium text-slate-900">{student?.name || '—'}</span>
+                      <div className="flex min-w-0 flex-wrap items-center gap-2">
+                        <span className="min-w-0 truncate text-sm font-medium text-slate-900">{student?.name || '—'}</span>
                         <Badge color={lessonStatusMeta[l.status].color}>{lessonStatusMeta[l.status].label}</Badge>
                       </div>
-                      <div className="mt-0.5 text-xs text-slate-500">{l.subject} · {l.duration} мин</div>
+                      <div className="mt-0.5 truncate text-xs text-slate-500">{l.subject} · {l.duration} мин</div>
                     </div>
-                    <div className="flex shrink-0 items-center gap-2">
-                      <div className="text-right text-sm text-slate-600">
+                    <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 sm:shrink-0 sm:justify-end">
+                      <div className="text-sm text-slate-600 sm:text-right">
                         {formatDateNumeric(l.date)}
                         <span className="ml-2 text-slate-400">{l.time}</span>
                       </div>
-                      <div className="flex items-center gap-0.5">
+                      <div className="flex shrink-0 items-center gap-0.5">
                         {l.status === 'запланировано' && (
                           <IconAction title="Провести" tone="green" onClick={() => markLessonConducted(l.id)}>
                             <path d="M20 6 9 17l-5-5" />
@@ -265,7 +265,7 @@ function LessonFormModal({ state, students, labels, defaultDate, onClose, onSubm
   return (
     <Modal open={!!state} onClose={onClose} title={isEdit ? 'Редактировать' : `Добавить ${labels.sessionAcc}`}>
       <form onSubmit={submit} className="space-y-4">
-        <label className="block">
+        <label className="block min-w-0">
           <span className="mb-1 block text-sm font-medium text-slate-600">{labels.person}</span>
           <Select value={form.studentId} onChange={(v) => set('studentId', v)} className="w-full">
             {students.map((s) => (<option key={s.id} value={s.id}>{s.name} · {s.subject}</option>))}

@@ -9,6 +9,16 @@
 
 🔗 **Живое демо:** https://tutordesk-two.vercel.app
 
+📌 **Portfolio case:** [docs/portfolio-case.md](docs/portfolio-case.md)
+
+## Demo screenshots
+
+![TutorDesk — desktop overview with KPI and charts](docs/screenshots/tutordesk-overview-desktop.png)
+
+| Mobile schedule / records | Mobile clients / CRM |
+|---|---|
+| ![TutorDesk — mobile lessons screen](docs/screenshots/tutordesk-lessons-mobile.png) | ![TutorDesk — mobile students screen](docs/screenshots/tutordesk-students-mobile.png) |
+
 ## Что внутри
 
 - **Обзор** — ключевые цифры за месяц (клиенты, выручка, посещаемость,
@@ -33,6 +43,20 @@
 - Статический сайт — дёшево хостить, быстро открывается, работает из РФ.
 - Чистый код на актуальном стеке, готовый расширяться (онлайн-запись,
   напоминания, экспорт, личный кабинет клиента).
+
+## Как это продаётся клиенту
+
+TutorDesk — не «коробочная CRM», а быстрый prototype рабочего кабинета под
+конкретный бизнес. На его базе можно собрать:
+
+- **Mini CRM Dashboard** — клиенты, записи, статусы, долги, графики;
+- **Booking + CRM** — клиентская запись + админка владельца;
+- **Service Admin Panel** — внутренний кабинет для услуг и расписания;
+- **MVP внутреннего учёта** — замена ручных таблиц и хаоса в переписке.
+
+> Это витринный demo-проект: пример системы, которую можно адаптировать под
+> конкретную нишу, подключить к backend, базе данных, авторизации, уведомлениям
+> и оплатам.
 
 ---
 
